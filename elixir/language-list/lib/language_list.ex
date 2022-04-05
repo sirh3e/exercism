@@ -1,28 +1,13 @@
 defmodule LanguageList do
-  def new() do
-    []
-  end
+  def new(), do: []
 
-  def add(list, language) do
-    [language | list]
-  end
+  def add(list, language), do: [language | list]
 
-  def remove(list) do
-    {_, list} = List.pop_at(list, 0)
-    list
-  end
+  def remove([_ | tail]), do: tail
 
-  def first(list) do
-    [head | _] = list
-    head
-  end
+  def first([head | _]), do: head
 
-  def count(list) do
-    list |> Enum.count
-  end
+  def count(list), do: length(list)
 
-  def exciting_list?(list) do
-    count = list |> Enum.count(&(&1 == "Elixir"))
-    count >= 1
-  end
+  def exciting_list?(list), do: "Elixir" in list
 end
